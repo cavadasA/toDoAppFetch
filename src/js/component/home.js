@@ -5,6 +5,8 @@ import { FaTimes } from "react-icons/fa";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
+// test
+
 //create your first component
 export function InputTask() {
 	const [tasks, setTask] = useState([]);
