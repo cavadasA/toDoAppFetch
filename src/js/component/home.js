@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-// test
-
-//create your first component
 export function InputTask() {
 	const [tasks, setTask] = useState([]);
+
+	function fetcher() {
+		const fetchedList = [];
+
+		useEffect(() => {
+			fetch("https://jsonplaceholder.typicode.com/todos")
+				.then(res => {
+					return res.json();
+				})
+				.then(res => {
+					res.forEach(element => {
+						fetchedList.push(element.title);
+					});
+					return setTask(state => fetchedList);
+				});
+		}, []);
+	}
+
+	fetcher();
 
 	return (
 		<div className="row">
